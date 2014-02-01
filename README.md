@@ -3,6 +3,8 @@ WooCommerce-Thumbnail-Hack
 
 Replace fullsize image when thumbnail on single product page in WooCommerce is clicked.
 
+This is dependant on CSS selectors to work and my not work with any theme. It is tested and works with the standard templates from WooCommerce and a few of the themes from WooThemes(Wootique).
+
 Place woocommerce-thumbnail-hack.php in your plugins dir. Activate plugin!
 
 Easy way. You are done!
