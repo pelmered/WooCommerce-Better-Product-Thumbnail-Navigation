@@ -1,4 +1,4 @@
-WooCommerce-Thumbnail-Hack
+WooCommerce-Better-Thumbnail-Navigation
 ==========================
 
 Replace fullsize image when thumbnail on single product page in WooCommerce is clicked.
