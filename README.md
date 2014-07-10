@@ -9,7 +9,7 @@ Place woocommerce-thumbnail-hack.php in your plugins dir. Activate plugin!
 
 Easy way. You are done!
 
-Better way:
+Better way(Edit your theme and do not use this plugin):
 
 In 
 
@@ -23,11 +23,31 @@ Add
 
     array_unshift( $attachment_ids, get_post_thumbnail_id() );
     
-Remove everything between
+Copy the following into one of your script files
 
-    //Optional start
-    
-and
+```
+jQuery('.thumbnails>a').first().clone().prependTo($('.thumbnails')).find('img').attr('src', $('.woocommerce-main-image img').attr('src').replace('-<Single_product_image_size_here>','-<Thumbnail_product_image_size_here>'));
 
-    //Optional end
-    
+jQuery('.thumbnails>a').each( function( i, el) {
+
+    var $el = jQuery(el);
+
+    $el.removeClass('first last');
+
+    var $mod = i%<?php echo $columns; ?>;
+    if($mod === 0)
+    {
+        $el.addClass('first');
+    }
+    else if($mod === 2)
+    {
+        $el.addClass('last');
+    }
+});
+jQuery('.thumbnails>a').last().addClass('last');
+```
+
+Change `<Single_product_image_size_here>` and `<Thumbnail_product_image_size_here>` into the image sises of your theme. Should be like thi `widthxheight`, for example `200x200`.
+
+Done!
+
