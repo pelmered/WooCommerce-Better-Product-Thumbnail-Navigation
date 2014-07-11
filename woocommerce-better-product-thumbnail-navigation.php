@@ -35,7 +35,9 @@ class WC_Better_Product_Thumbnail_Navigation
     {
         if(!is_product())
         {
-            add_action('wp_footer', 'pe_wcth_print_footer_scrips', 99);
+            add_action('wp_footer', array($this, 'print_footer_scrips'), 99);
+            
+            add_filter('woocommerce_product_gallery_attachment_ids', array($this, 'add_featured_image_to_thumbnails'));
         }
     }
     
@@ -55,7 +57,14 @@ class WC_Better_Product_Thumbnail_Navigation
         return self::$instance;
     }
     
-    function pe_wcth_print_footer_scrips() {
+    function add_featured_image_to_thumbnails($thumbnails_ids)
+    {
+        //Prepend featured image to thumbnails
+        array_unshift($thumbnails_ids, get_post_thumbnail_id());
+        return $thumbnails_ids;
+    }
+    
+    function print_footer_scrips() {
 
         $thumbnail_size = get_option('shop_thumbnail_image_size');
         $single_size = get_option('shop_single_image_size');
@@ -63,37 +72,35 @@ class WC_Better_Product_Thumbnail_Navigation
         //Set image sizes. Must match exactly!
         $product_thumbnail_size = $thumbnail_size['width'].'x'.$thumbnail_size['height'];
         $product_single_image_size = $single_size['width'].'x'.$single_size['height'];
-
-        //Get number of thumbnails per row (columns)
-        $columns = apply_filters( 'woocommerce_product_thumbnails_columns', 3 );
     ?>
     <script type='text/javascript'>
     jQuery(function($){
-        //Optional start
-        $('.thumbnails>a').first().clone().prependTo($('.thumbnails')).find('img').attr('src', $('.woocommerce-main-image img').attr('src').replace('-<?php echo $product_single_image_size; ?>','-<?php echo $product_thumbnail_size; ?>'));
-
-        $('.thumbnails>a').each( function( i, el) {
-
-            var $el = $(el);
-
-            $el.removeClass('first last');
-
-            var $mod = i%<?php echo $columns; ?>;
-            if($mod === 0)
-            {
-                $el.addClass('first');
-            }
-            else if($mod === 2)
-            {
-                $el.addClass('last');
-            }
+        
+        //Override prettyPhoto functionality to avoid duplicates
+        var photoGalleryImages = [], 
+            photoGalleryTitles = [];
+        
+        $('.woocommerce-main-image>img').click(function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            $.prettyPhoto.open(photoGalleryImages,photoGalleryTitles);
         });
-        $('.thumbnails>a').last().addClass('last');
-        //Optional end
+        
+        $('.thumbnails>a').each( function() {
+            $this = $(this);
+            photoGalleryImages.push($this.attr('href'));
+            photoGalleryTitles.push($this.attr('title'));
+        });
+        
         $('.thumbnails>a>img').click(function(e){
             e.stopPropagation();
-            $('.woocommerce-main-image img').attr('src', $(this).attr('src').replace('-<?php echo $product_thumbnail_size; ?>','-<?php echo $product_single_image_size; ?>'));
-            return false;
+            e.preventDefault();
+            $this = $(this);
+            $('.thumbnails>a>img').removeClass('active');
+            $this.addClass('active');
+            $src = $this.attr('src');
+            $('.woocommerce-main-image').attr('href', $src);
+            $('.woocommerce-main-image img').attr('src', $src.replace('-<?php echo $product_thumbnail_size; ?>','-<?php echo $product_single_image_size; ?>'));
         }); 
 
     });
@@ -107,7 +114,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) 
 {
-    WC_Better_Thumbnail_Navigation::get_instance();
+    WC_Better_Product_Thumbnail_Navigation::get_instance();
 }
 else
 {
