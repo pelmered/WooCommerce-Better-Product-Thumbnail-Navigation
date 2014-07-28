@@ -3,7 +3,7 @@
 Plugin Name: WooComemrce Better Thumbnail Navigation
 Description: Replace fullsize image when thumbnail on single product page in WooCommerce is clicked. 
 Author: Peter Elmered
-Version: 1.0.0
+Version: 0.1.0
 Author URI: http://elmered.com/
 */
 
@@ -25,7 +25,7 @@ class WC_Better_Product_Thumbnail_Navigation
      */
     protected static $instance = null;
 
-    const VERSION = '1.0.0';
+    const VERSION = '0.1.0';
     function __construct()
     {
         add_action('init', array($this, 'init'));

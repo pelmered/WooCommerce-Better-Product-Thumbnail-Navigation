@@ -9,7 +9,7 @@ Place woocommerce-thumbnail-hack.php in your plugins dir. Activate plugin!
 
 Easy way. You are done!
 
-Better way(Edit your theme and do not use this plugin):
+Integrate into your theme(Edit your theme and do not use this plugin):
 
 In 
 

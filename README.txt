@@ -1,24 +1,37 @@
-=== Movable Content Editor ===
+=== WooCommerce Better Thumbnail Navigation ===
 Contributors: pekz0r
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8L2PHLURJMC8Y
 Tags: Better, Editing, Movable, Content Editor, WYSIWYG
 Requires at least: 3.8.1
 Tested up to: 3.9.1
-Stable tag: 1.0.1
+Stable tag: 0.1.0
 
-Ever wanted to have the product data panel on top on the product edit page? Here is your cure!
+Replace fullsize image when thumbnail on single product page in WooCommerce is clicked.
 
 == Description ==
 
-Ever wanted to have the product data panel on top on the product edit page? Here is your cure!
+Replace fullsize image when thumbnail on single product page in WooCommerce is clicked. This should also work nicely with the build in lightbox feature in WooCommerce (PrettyPhoto).
 
-With this plugin you can move the main editor where you want it, just like the short product description. See the screenshot to see how it looks.
+What this plugin do:
+
+* When a thumbnail is clicked, the large main image is updated with the large version of the clicked image.
+* When the large main image is clicked a lightbox will open where the user can see larger versions of all the images for the product.
+* Adds the products main/featured image to the product thumbnails.
+
+= NOTICE =
+This plugin is currently dependant on CSS selectors to work and will therefore not work with any theme. It is tested and works with the standard templates from WordPress and a few of the themes from WooThemes(Wootique for example). Contact me if you are expieriencing problems with you theme. The goal is to make this plugin work with most themes with little or no need for custom configuration by the user.
+
+= Development =
+
+All development of this plugin occurs on [GitHub](https://github.com/pelmered/WooCommerce-Better-Product-Thumbnail-Navigation "WooCommerce Better Thumbnail Navigation on GitHub"). Please help me develop this by forking and sending pull requests.
 
 == Installation ==
 
-1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
+For integrating this info your theme, see GitHub.
+
+1. Upload plugin folder to the `/wp-content/plugins/` directory of your WordPress installation
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to 'Settings' and then 'Movable Content Editor' to check the post types you want to activate this for.
+3. Test how it works on the single product page. 
 
 == Screenshots ==
 
