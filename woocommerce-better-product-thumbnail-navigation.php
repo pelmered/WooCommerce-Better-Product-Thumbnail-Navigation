@@ -3,7 +3,7 @@
 Plugin Name: WooComemrce Better Thumbnail Navigation
 Description: Replace fullsize image when thumbnail on single product page in WooCommerce is clicked. 
 Author: Peter Elmered
-Version: 0.1.0
+Version: 0.1.1
 Author URI: http://elmered.com/
 */
 
@@ -20,12 +20,12 @@ class WC_Better_Product_Thumbnail_Navigation
     /**
      * Instance of this class.
      *
-     * @since    0.1.0
+     * @since    0.1.1
      * @var      object
      */
     protected static $instance = null;
 
-    const VERSION = '0.1.0';
+    const VERSION = '0.1.1';
     function __construct()
     {
         add_action('init', array($this, 'init'));
@@ -135,7 +135,7 @@ else
             add_action('admin_notices', 'wcpf_woocommerce_not_active_notice');
         }
 
-        function wcpf_woocommerce_not_active_notice()
+        function wcbptn_woocommerce_not_active_notice()
         {
             ?>
             <div class="updated fade">
@@ -155,11 +155,11 @@ else
             <?php
         }
 
-        function wpcf_deactivate_plugin()
+        function wcbptn_deactivate_plugin()
         {
             deactivate_plugins( plugin_basename( __FILE__ ) );
         }
-        function wpcf_deactivate_plugin_notice()
+        function wcbptn_deactivate_plugin_notice()
         {
             ?>
             <div class="updated fade">
@@ -167,11 +167,11 @@ else
             </div>
             <?php
         }
-        function wpcf_activate_woocommerce()
+        function wcbptn_activate_woocommerce()
         {
             deactivate_plugins( plugin_basename( __FILE__ ) );
         }
-        function wpcf_activate_woocommerce_notice()
+        function wcbptn_activate_woocommerce_notice()
         {
             ?>
             <div class="updated fade">
