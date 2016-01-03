@@ -101,7 +101,9 @@ class WC_Better_Product_Thumbnail_Navigation
             $src = $this.attr('src');
             $('.woocommerce-main-image').attr('href', $src);
             $('.woocommerce-main-image img').attr('src', $src.replace('-<?php echo $product_thumbnail_size; ?>','-<?php echo $product_single_image_size; ?>'));
-        }); 
+      $srcset = $this.attr('srcset');
+$('.woocommerce-main-image').attr('href', $srcset);
+$('.woocommerce-main-image img').attr('srcset', $srcset.replace('-<?php echo $product_thumbnail_size; ?>','-<?php echo $product_single_image_size; ?>'));  }); 
 
     });
     </script>
