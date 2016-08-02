@@ -87,21 +87,24 @@ class WC_Better_Product_Thumbnail_Navigation
         });
         
         $('.thumbnails>a').each( function() {
-            $this = $(this);
+            var $this = $(this);
             photoGalleryImages.push($this.attr('href'));
             photoGalleryTitles.push($this.attr('title'));
         });
         
-        $('.thumbnails>a>img').click(function(e){
+        $('.thumbnails>a').click(function(e){
             e.stopPropagation();
             e.preventDefault();
-            $this = $(this);
+
+            var $this = $(this).find('img');
             $('.thumbnails>a>img').removeClass('active');
             $this.addClass('active');
-            $src = $this.attr('src');
+
+            var $src = $this.attr('src');
             $('.woocommerce-main-image').attr('href', $src);
             $('.woocommerce-main-image img').attr('src', $src.replace('-<?php echo $product_thumbnail_size; ?>','-<?php echo $product_single_image_size; ?>'));
-      	    $srcset = $this.attr('srcset');
+
+      	    var $srcset = $this.attr('srcset');
             $('.woocommerce-main-image').attr('href', $srcset);
             $('.woocommerce-main-image img').attr('srcset', $srcset.replace('-<?php echo $product_thumbnail_size; ?>','-<?php echo $product_single_image_size; ?>'));  }); 
     });
