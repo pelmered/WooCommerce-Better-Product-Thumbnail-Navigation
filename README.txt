@@ -39,6 +39,9 @@ For integrating this info your theme, see GitHub.
 
 == Changelog ==
 
+= 0.1.2 =
+* Fix issues with responsive images/srcset in WordPress 4.4
+* Improve thumbnail selector to work with more themes
 
 = 0.1.0 =
 First public release
