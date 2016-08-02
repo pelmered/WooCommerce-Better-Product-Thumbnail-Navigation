@@ -3,7 +3,7 @@
 Plugin Name: WooComemrce Better Thumbnail Navigation
 Description: Replace fullsize image when thumbnail on single product page in WooCommerce is clicked. 
 Author: Peter Elmered
-Version: 0.1.1
+Version: 0.1.2
 Author URI: http://elmered.com/
 */
 
@@ -25,7 +25,7 @@ class WC_Better_Product_Thumbnail_Navigation
      */
     protected static $instance = null;
 
-    const VERSION = '0.1.1';
+    const VERSION = '0.1.2';
     function __construct()
     {
         add_action('init', array($this, 'init'));
@@ -101,10 +101,9 @@ class WC_Better_Product_Thumbnail_Navigation
             $src = $this.attr('src');
             $('.woocommerce-main-image').attr('href', $src);
             $('.woocommerce-main-image img').attr('src', $src.replace('-<?php echo $product_thumbnail_size; ?>','-<?php echo $product_single_image_size; ?>'));
-      $srcset = $this.attr('srcset');
-$('.woocommerce-main-image').attr('href', $srcset);
-$('.woocommerce-main-image img').attr('srcset', $srcset.replace('-<?php echo $product_thumbnail_size; ?>','-<?php echo $product_single_image_size; ?>'));  }); 
-
+      	    $srcset = $this.attr('srcset');
+            $('.woocommerce-main-image').attr('href', $srcset);
+            $('.woocommerce-main-image img').attr('srcset', $srcset.replace('-<?php echo $product_thumbnail_size; ?>','-<?php echo $product_single_image_size; ?>'));  }); 
     });
     </script>
     <?php 
