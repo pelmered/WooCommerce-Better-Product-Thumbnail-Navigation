@@ -3,7 +3,7 @@ Contributors: pekz0r
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8L2PHLURJMC8Y
 Tags: Better, Editing, Movable, Content Editor, WYSIWYG
 Requires at least: 3.8.1
-Tested up to: 3.9.1
+Tested up to: 4.6
 Stable tag: 0.1.2
 
 Replace fullsize image when thumbnail on single product page in WooCommerce is clicked.
